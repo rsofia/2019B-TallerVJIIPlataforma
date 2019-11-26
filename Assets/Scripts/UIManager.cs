@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     public Sprite vidaVacia;
     public Personaje personaje;
 
+    [Header("Monedas")]
+    public Text txtMoneda;
+
     //-- funciones de monobehaviour
     private void Start()
     {
@@ -91,6 +94,11 @@ public class UIManager : MonoBehaviour
         }
 
 
+    }
+
+    public void RefrescarMoneda(int numMonedas)
+    {
+        txtMoneda.text = "$" + numMonedas;
     }
 
 }
