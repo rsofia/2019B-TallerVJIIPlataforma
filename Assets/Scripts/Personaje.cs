@@ -21,6 +21,9 @@ public class Personaje : MonoBehaviour
     [Header("Disparos")]
     public GameObject prefabBala;
     public Transform puntaArma;
+    public float shootingForce = 250;
+
+    private float direction;
     
 
     public void SumarVida(float vidaAdicional)
@@ -99,6 +102,7 @@ public class Personaje : MonoBehaviour
         //Reproducir su animacion
         bool isWalking = (Mathf.Abs(inputX) + Mathf.Abs(inputY)) > 0;
         anim.SetBool("Walk", isWalking);
+        direction = inputX;
         //acomodar al sprite en la direccion correcta
         if (inputX < 0)
             charSprite.flipX = true;
@@ -121,7 +125,18 @@ public class Personaje : MonoBehaviour
     {
         GameObject bala = Instantiate(prefabBala);
         bala.transform.position = puntaArma.position;
-        bala.GetComponent<Rigidbody2D>().AddForce(new Vector2(150, 0));
+        //Si esta volteando a la izquierda, disparar a la izquierda
+        if (direction < 0)
+        {
+            puntaArma.transform.localPosition = new Vector3(-0.124f, puntaArma.transform.localPosition.y, puntaArma.transform.localPosition.z);
+            bala.GetComponent<Rigidbody2D>().AddForce(new Vector2(-shootingForce, 0));
+        }
+        else //si esta volteando a la dercha, disparar a la derecha
+        {
+            bala.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootingForce, 0));
+            puntaArma.transform.localPosition = new Vector3(0.124f, puntaArma.transform.localPosition.y, puntaArma.transform.localPosition.z);
+        }
+
         //todo mejorar rango
         //todo elimar balas
     }
