@@ -1117,7 +1117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051400230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.038855597, y: 0.019370556, z: -10}
+  m_LocalPosition: {x: 0.038740337, y: 0.019370556, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1542,7 +1542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656306134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.038855597, y: 0.019370556, z: -10}
+  m_LocalPosition: {x: 0.038740337, y: 0.019370556, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 929849562}
@@ -1638,8 +1638,9 @@ GameObject:
   - component: {fileID: 1711921550}
   - component: {fileID: 1711921549}
   - component: {fileID: 1711921553}
+  - component: {fileID: 1711921554}
   m_Layer: 0
-  m_Name: skull_idle
+  m_Name: Enemigo Skull
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1761,6 +1762,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.32, y: 0.32}
   m_Direction: 0
+--- !u!114 &1711921554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711921548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8acbfc9e0640154fb1b5a6b2a37ddb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 0.5
+  vida: 1
 --- !u!1001 &1735104730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2178,6 +2193,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7048747294906295723, guid: 8e5c97105db2da84b8e8bbe9a1dc1431,
+        type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 2042490911}
+    - target: {fileID: 7048747294906295723, guid: 8e5c97105db2da84b8e8bbe9a1dc1431,
+        type: 3}
+      propertyPath: totalEnemigos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048747294906295723, guid: 8e5c97105db2da84b8e8bbe9a1dc1431,
+        type: 3}
+      propertyPath: damage
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7048747294906295724, guid: 8e5c97105db2da84b8e8bbe9a1dc1431,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2233,10 +2263,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7048747294906295723, guid: 8e5c97105db2da84b8e8bbe9a1dc1431,
-        type: 3}
-      propertyPath: ui
-      value: 
-      objectReference: {fileID: 2042490911}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e5c97105db2da84b8e8bbe9a1dc1431, type: 3}

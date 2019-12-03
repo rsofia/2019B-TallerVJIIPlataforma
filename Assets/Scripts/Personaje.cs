@@ -22,9 +22,19 @@ public class Personaje : MonoBehaviour
     public GameObject prefabBala;
     public Transform puntaArma;
     public float shootingForce = 250;
-
+    public float damage = 1;
     private float direction;
-    
+
+    [Header("Nivel")]
+    public int totalEnemigos = 0;
+    private int enemigosVencidos = 0;
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+        enemigosVencidos = 0;
+    }
+
 
     public void SumarVida(float vidaAdicional)
     {
@@ -57,6 +67,16 @@ public class Personaje : MonoBehaviour
         ui.RefrescarMoneda(monedas);
     }
 
+    public void EnemigoVencido()
+    {
+        enemigosVencidos++;
+        if(enemigosVencidos >= totalEnemigos)
+        {
+            Time.timeScale = 0;
+            ui.PrenderPantallaGameOver();
+        }
+    }
+
     /// <summary>
     /// Se manda a llamar automaticamente al entrar en una colision con Trigger
     /// </summary>
@@ -64,14 +84,15 @@ public class Personaje : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Recoger moneda
-        if(collision.CompareTag("Moneda"))
+        if(collision.CompareTag(GameConstants.currencyTag))
         {
             SumarMoneda(); //sumar puntaje moneda
             collision.gameObject.SetActive(false); //apagar moneda
         }
-        else if(collision.CompareTag("Enemigo"))
+        else if(collision.CompareTag(GameConstants.enemyTag))
         {
-            RestarVida(0.5f);
+            float damage = collision.gameObject.GetComponent<Enemigo>().daño;
+            RestarVida(damage);
         }
     }
 
@@ -124,21 +145,19 @@ public class Personaje : MonoBehaviour
     public void Disparar()
     {
         GameObject bala = Instantiate(prefabBala);
-        bala.transform.position = puntaArma.position;
         //Si esta volteando a la izquierda, disparar a la izquierda
         if (direction < 0)
         {
             puntaArma.transform.localPosition = new Vector3(-0.124f, puntaArma.transform.localPosition.y, puntaArma.transform.localPosition.z);
-            bala.GetComponent<Rigidbody2D>().AddForce(new Vector2(-shootingForce, 0));
+            bala.transform.position = puntaArma.position;
+            bala.GetComponent<Bala>().Shoot(true, new Vector2(-shootingForce, 0), damage);
         }
         else //si esta volteando a la dercha, disparar a la derecha
         {
-            bala.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootingForce, 0));
             puntaArma.transform.localPosition = new Vector3(0.124f, puntaArma.transform.localPosition.y, puntaArma.transform.localPosition.z);
+            bala.transform.position = puntaArma.position;
+            bala.GetComponent<Bala>().Shoot(true, new Vector2(shootingForce, 0), damage);
         }
-
-        //todo mejorar rango
-        //todo elimar balas
     }
 
 
