@@ -8,8 +8,8 @@ public class Bala : MonoBehaviour
     public float tiempoVida = 3.0f;
     public bool isPlayerBullet = false;
     private float damage = 0;
-    float cooldown = 2.0f;
     bool canDamge = true;
+
     void Start()
     {
         Invoke("Destruir", tiempoVida);

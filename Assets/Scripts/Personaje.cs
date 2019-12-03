@@ -31,8 +31,8 @@ public class Personaje : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1;
-        enemigosVencidos = 0;
+        Time.timeScale = 1; //regresar a valor default del tiempo
+        enemigosVencidos = 0; //resetar numero de enemigos vencidos al principio de cada nivel
     }
 
 
@@ -72,7 +72,7 @@ public class Personaje : MonoBehaviour
         enemigosVencidos++;
         if(enemigosVencidos >= totalEnemigos)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 0; //Pausa
             ui.PrenderPantallaGameOver();
         }
     }
