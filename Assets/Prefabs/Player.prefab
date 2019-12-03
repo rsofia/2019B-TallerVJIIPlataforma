@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7048747294906295726}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +90,8 @@ MonoBehaviour:
     type: 3}
   puntaArma: {fileID: 7048747296408217648}
   shootingForce: 250
+  damage: 1
+  totalEnemigos: 0
 --- !u!50 &7048747294906295725
 Rigidbody2D:
   serializedVersion: 4
@@ -169,11 +171,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cowboy_Idle_0
       objectReference: {fileID: 0}
-    - target: {fileID: 4320686153499295290, guid: dc16ed1a266d5cb488b8251476eed643,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4320686153499295291, guid: dc16ed1a266d5cb488b8251476eed643,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,6 +224,11 @@ PrefabInstance:
     - target: {fileID: 4320686153499295291, guid: dc16ed1a266d5cb488b8251476eed643,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320686153499295290, guid: dc16ed1a266d5cb488b8251476eed643,
+        type: 3}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

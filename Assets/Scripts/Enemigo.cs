@@ -22,4 +22,14 @@ public class Enemigo : MonoBehaviour
         FindObjectOfType<Personaje>()?.EnemigoVencido();
         Destroy(gameObject);
     }
+
+    //Dano cuerpo - cuerpo
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //si choca con el jugador, restar vida al jugador
+        if(collision.CompareTag(GameConstants.playerTag))
+        {
+            collision.gameObject.GetComponent<Personaje>().RestarVida(daño);
+        }
+    }
 }

@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8acbfc9e0640154fb1b5a6b2a37ddb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "da\xF1o": 0.5
+  "da\xF1o": 2
   vida: 1
 --- !u!1001 &1735104730
 PrefabInstance:
