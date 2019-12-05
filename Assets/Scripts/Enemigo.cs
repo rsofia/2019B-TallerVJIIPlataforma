@@ -6,6 +6,7 @@ public class Enemigo : MonoBehaviour
 {
     public float daño = 0.5f;
     public float vida = 1;
+    public bool ataqueCuerpo; //si puede hacer dano al tocar
 
     public void RestarVida(float dano)
     {
@@ -16,7 +17,7 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    private void Morir()
+    protected void Morir()
     {
         //antes de morir, sumar puntos al personaje
         FindObjectOfType<Personaje>()?.EnemigoVencido();
@@ -24,12 +25,16 @@ public class Enemigo : MonoBehaviour
     }
 
     //Dano cuerpo - cuerpo
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        //si choca con el jugador, restar vida al jugador
-        if(collision.CompareTag(GameConstants.playerTag))
+        if(ataqueCuerpo)
         {
-            collision.gameObject.GetComponent<Personaje>().RestarVida(daño);
+            //si choca con el jugador, restar vida al jugador
+            if (collision.CompareTag(GameConstants.playerTag))
+            {
+                collision.gameObject.GetComponent<Personaje>().RestarVida(daño);
+            }
         }
+        
     }
 }
